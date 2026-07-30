@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+/*
+ * ============================================================================
+ *  Elastic Console — design tokens
+ *  Extracted verbatim from the design prototype (Elastic Console.dc.html).
+ *  This file + src/theme/tokens.ts are the single source of truth.
+ *  Light (:root) is the DEFAULT theme; [data-theme="dark"] overrides at runtime.
+ * ============================================================================
+ */
+
+/* ---- Light theme (default) ---- */
+:root {
+  --bg: #f3f0e8;
+  --panel: #fbfaf6;
+  --elev: #ffffff;
+  --sunken: #ece8dd;
+  --border: #e4dfd2;
+  --border-strong: #d6cfbe;
+  --hover: #eeeae0;
+  --text: #23221d;
+  --dim: #6c685d;
+  --faint: #9a958a;
+  --accent: #23221d;
+  --accent-text: #fbfaf6;
+  --accent-soft: #e9e4d7;
+  --green: #4a9d6f;
+  --yellow: #bf9230;
+  --red: #bf5446;
+  --blue: #3a6ea5;
+  --g0: #3f8f86;
+  --g1: #b07f3a;
+  --g2: #8a6aa0;
+  --jkey: #3a6ea5;
+  --jstr: #4f7a3f;
+  --jnum: #a0592c;
+  --jbool: #7a4fa0;
+  --jnull: #9a958a;
+  --jpunc: #a39e90;
+  --mark: #f1e3a8;
+}
+
+/* ---- Dark theme ---- */
+[data-theme="dark"] {
+  --bg: #15140f;
+  --panel: #1b1a14;
+  --elev: #211f18;
+  --sunken: #100f0b;
+  --border: #2c2a21;
+  --border-strong: #3b382c;
+  --hover: #26241c;
+  --text: #ece8dd;
+  --dim: #a39d8d;
+  --faint: #6e695b;
+  --accent: #ece8dd;
+  --accent-text: #15140f;
+  --accent-soft: #2c2a21;
+  --green: #5cab7e;
+  --yellow: #cda23f;
+  --red: #cf6757;
+  --blue: #7aa2d6;
+  --g0: #5aa79d;
+  --g1: #c69a52;
+  --g2: #a587bb;
+  --jkey: #7aa2d6;
+  --jstr: #94bd78;
+  --jnum: #d9a05b;
+  --jbool: #b591d4;
+  --jnull: #6e695b;
+  --jpunc: #5f5b4e;
+  --mark: #4d4520;
+}
+
+/*
+ * Map the runtime CSS variables into Tailwind's theme so utilities like
+ * `bg-panel`, `text-dim`, `border-border` resolve to the live (theme-aware)
+ * variable. Switching `data-theme` re-resolves every utility automatically.
+ */
+@theme inline {
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-elev: var(--elev);
+  --color-sunken: var(--sunken);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-hover: var(--hover);
+  --color-text: var(--text);
+  --color-dim: var(--dim);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-soft: var(--accent-soft);
+  --color-green: var(--green);
+  --color-yellow: var(--yellow);
+  --color-red: var(--red);
+  --color-blue: var(--blue);
+  --color-g0: var(--g0);
+  --color-g1: var(--g1);
+  --color-g2: var(--g2);
+  --color-jkey: var(--jkey);
+  --color-jstr: var(--jstr);
+  --color-jnum: var(--jnum);
+  --color-jbool: var(--jbool);
+  --color-jnull: var(--jnull);
+  --color-jpunc: var(--jpunc);
+  --color-mark: var(--mark);
+}
+
+/* ---- Base reset (ported from prototype) ---- */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: var(--bg);
+  color: var(--text);
+}
+#root {
+  height: 100vh;
+  width: 100%;
+}
+
+/* ---- Scrollbars ---- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+input::placeholder {
+  color: var(--faint);
+}
+
+/* ---- Animations (ported from prototype) ---- */
+@keyframes om-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes om-pop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 6px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+.om-fade {
+  animation: om-fade 0.15s ease;
+}
+.om-fade-fast {
+  animation: om-fade 0.1s ease;
+}
+@keyframes om-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.om-spin {
+  animation: om-spin 0.7s linear infinite;
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <!-- Merged into the bundle's Info.plist by Tauri. Declares the app uses no
+       non-exempt encryption, which avoids the export-compliance prompt on the
+       Mac App Store. -->
+  <key>ITSAppUsesNonExemptEncryption</key>
+  <false/>
+
+  <key>LSMinimumSystemVersion</key>
+  <string>10.15</string>
+
+  <key>CFBundleName</key>
+  <string>Elastic Console</string>
+
+  <key>NSHumanReadableCopyright</key>
+  <string>© Elastic Console</string>
+
+  <!-- This is a developer tool; no microphone/camera/location usage. -->
+  <key>LSApplicationCategoryType</key>
+  <string>public.app-category.developer-tools</string>
+</dict>
+</plist>
